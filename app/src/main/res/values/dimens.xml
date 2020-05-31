@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="shipments_recycler_padding">28dp</dimen>
+    <dimen name="shipments_recycler_verticalPadding">12dp</dimen>
+    <dimen name="shipmentCard_cornerRadius">12dp</dimen>
+    <dimen name="shipmentCard_elevation">0dp</dimen>
+    <dimen name="common_layout_radius">32dp</dimen>
+</resources>

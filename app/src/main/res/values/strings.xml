@@ -1,3 +1,11 @@
 <resources>
+
     <string name="app_name">CurrencyConverter</string>
+
+    <string name="generic_error">Something went wrong. Please try later.</string>
+    <string name="server_error">Server error. Please try later.</string>
+    <string name="timeout_error">Timeout error. Please try again when network stabilizes.</string>
+    <string name="noInternetConnection_error">No internet connection. Please check the internet.</string>
+    <string name="notFound_error">404 error. Please try later.</string>
+
 </resources>
