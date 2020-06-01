@@ -13,8 +13,9 @@ class VoCurrency : BaseObservable() {
 
     @get:Bindable
     var value: String = "0.0"
-        set(value) {
-            field = value
-            notifyPropertyChanged(BR.value)
-        }
+
+    fun setValueWithNotify(v: Double) {
+        value = v.toString()
+        notifyPropertyChanged(BR.value)
+    }
 }

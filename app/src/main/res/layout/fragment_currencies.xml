@@ -52,7 +52,7 @@
         android:focusable="true"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@color/colorPrimaryDark"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:src="@drawable/ic_launcher_foreground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

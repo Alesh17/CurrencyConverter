@@ -7,7 +7,6 @@ fun List<Currency>.mapToVoCurrenciesList(): List<VoCurrency> {
     return this.map {
         VoCurrency().apply {
             id = it.id
-            abbreviation = it.abbreviation
             scale = it.scale
             abbreviation = it.abbreviation
             rate = it.rate

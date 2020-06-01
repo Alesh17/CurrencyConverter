@@ -28,18 +28,14 @@ class CurrenciesViewModel @Inject constructor(
         }
     }
 
-    fun calculate(currentCurrency: VoCurrency, currentValue: String) {
+    fun calculate(currentCurrency: VoCurrency) {
 
-        val value = currentValue.toDoubleOrNull() ?: 0.0
-        val byn = value * currentCurrency.rate
-        val list = currencies.value?.peekContent()?.toMutableList() ?: mutableListOf()
+        val valueDouble = currentCurrency.value.toDoubleOrNull() ?: 0.0
+        val byn = valueDouble * currentCurrency.rate / currentCurrency.scale
+        val currentList = currencies.value?.peekContent()?.toMutableList() ?: mutableListOf()
 
-        list.forEachIndexed { position, item ->
-            if (currentCurrency.id != item.id) {
-                val value1 = byn / list[position].rate
-                list[position].value = value1.toString() // попробовать item
-            }
-            //else list[position].value = currentCurrency.value
+        for (item in currentList) {
+            if (currentCurrency.id != item.id) item.setValueWithNotify(byn / item.rate)
         }
     }
 }
