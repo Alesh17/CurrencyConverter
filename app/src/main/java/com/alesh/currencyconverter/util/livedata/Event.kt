@@ -1,4 +1,4 @@
-package com.heliskycargo.utils.livedata
+package com.alesh.currencyconverter.util.livedata
 
 import androidx.lifecycle.Observer
 
@@ -8,7 +8,7 @@ import androidx.lifecycle.Observer
 open class Event<out T>(private val content: T) {
 
     var hasBeenHandled = false
-        private set // Allow external read but not write
+        private set
 
     /**
      * Returns the content and prevents its use again.

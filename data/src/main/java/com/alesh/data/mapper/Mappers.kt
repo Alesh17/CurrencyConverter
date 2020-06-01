@@ -9,7 +9,6 @@ fun List<CurrencyResponse>.mapToCurrenciesList(): List<Currency> {
             id = it.id ?: throw IllegalArgumentException(),
             abbreviation = it.abbreviation ?: throw IllegalArgumentException(),
             scale = it.scale ?: throw IllegalArgumentException(),
-            name = it.name ?: throw IllegalArgumentException(),
             rate = it.rate ?: throw IllegalArgumentException()
         )
     }

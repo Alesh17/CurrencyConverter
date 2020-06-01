@@ -1,25 +1,25 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="ShipmentsRecyclerViewStyle">
+    <style name="RecyclerViewStyle">
         <item name="android:background">@drawable/bg_rounded_top_grey</item>
         <item name="android:clipToPadding">false</item>
         <item name="android:overScrollMode">never</item>
         <item name="android:scrollbars">none</item>
-        <item name="android:paddingTop">@dimen/shipments_recycler_padding</item>
-        <item name="android:paddingBottom">@dimen/shipments_recycler_verticalPadding</item>
-        <item name="android:paddingStart">@dimen/shipments_recycler_padding</item>
-        <item name="android:paddingEnd">@dimen/shipments_recycler_padding</item>
+        <item name="android:paddingTop">@dimen/recycler_padding</item>
+        <item name="android:paddingBottom">@dimen/recycler_verticalPadding</item>
+        <item name="android:paddingStart">@dimen/recycler_padding</item>
+        <item name="android:paddingEnd">@dimen/recycler_padding</item>
     </style>
 
     <style name="CardViewStyle">
-        <item name="cardCornerRadius">@dimen/shipmentCard_cornerRadius</item>
-        <item name="cardElevation">@dimen/shipmentCard_elevation</item>
+        <item name="cardCornerRadius">@dimen/cornerRadius</item>
+        <item name="cardElevation">@dimen/сard_elevation</item>
         <item name="cardPreventCornerOverlap">false</item>
     </style>
 

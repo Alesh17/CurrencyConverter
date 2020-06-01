@@ -2,9 +2,11 @@
   <dictionary name="user">
     <words>
       <w>alesh</w>
+      <w>coroutines</w>
       <w>currencyconverter</w>
       <w>exrates</w>
       <w>interactor</w>
+      <w>snackbar</w>
     </words>
   </dictionary>
 </component>

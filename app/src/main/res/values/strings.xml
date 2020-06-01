@@ -1,7 +1,9 @@
 <resources>
 
     <string name="app_name">CurrencyConverter</string>
+    <string name="close_caps">CLOSE</string>
 
+    <!-- Errors -->
     <string name="generic_error">Something went wrong. Please try later.</string>
     <string name="server_error">Server error. Please try later.</string>
     <string name="timeout_error">Timeout error. Please try again when network stabilizes.</string>

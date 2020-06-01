@@ -16,12 +16,12 @@ fun Context.snackbar(view: View, @StringRes messageStringRes: Int) {
     hideKeyboard(view)
 
     if (view.isAttachedToWindow) {
-        val color = com.heliskycargo.R.color.colorMainRed
+        val color = com.alesh.currencyconverter.R.color.colorError
         val actionColor = android.R.color.white
         val snackbar = Snackbar.make(view, getString(messageStringRes), Snackbar.LENGTH_INDEFINITE)
             .setDuration(snackbarDuration)
             .setActionTextColor(ContextCompat.getColor(applicationContext, actionColor))
-            .setAction(getString(com.heliskycargo.R.string.close_caps)) { }
+            .setAction(getString(com.alesh.currencyconverter.R.string.close_caps)) { }
         snackbar.view.setBackgroundColor(ContextCompat.getColor(applicationContext, color))
         snackbar.show()
     }

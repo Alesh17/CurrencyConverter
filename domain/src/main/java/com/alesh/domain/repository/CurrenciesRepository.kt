@@ -6,4 +6,10 @@ import com.alesh.domain.model.result.Result
 interface CurrenciesRepository {
 
     suspend fun getCurrencies(): Result<List<Currency>>
+
+    fun getFavoriteCurrencies(): List<Currency>
+
+    fun setFavoriteCurrency(id: Int)
+
+    fun removeFromFavoriteCurrencies(id: Int)
 }

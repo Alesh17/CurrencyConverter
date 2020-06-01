@@ -22,6 +22,10 @@ android {
         }
     }
 
+    dataBinding {
+        enabled = true
+    }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -49,6 +53,7 @@ dependencies {
     implementation globalDependencies.appCompat
     implementation globalDependencies.coreKtx
     implementation appDependencies.constraintLayout
+    implementation appDependencies.recyclerView
     implementation appDependencies.lifecycleExtensions
     implementation appDependencies.lifecycleViewmodelKtx
     implementation appDependencies.legacySupportV4

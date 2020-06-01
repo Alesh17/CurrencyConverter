@@ -6,6 +6,5 @@ data class CurrencyResponse(
     @SerializedName("Cur_ID") val id: Int?,                           // 170
     @SerializedName("Cur_Abbreviation") val abbreviation: String?,    // USD
     @SerializedName("Cur_Scale") val scale: Int?,                     // 1
-    @SerializedName("Cur_Name") val name: String?,                    // Доллар США
     @SerializedName("Cur_OfficialRate") val rate: Double?             // 2.4
 )
