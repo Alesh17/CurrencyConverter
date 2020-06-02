@@ -1,11 +1,13 @@
 package com.alesh.currencyconverter.util.string
 
-import com.alesh.currencyconverter.util.NumberTextWatcherForThousand.Companion.separatorForFractional
-import com.alesh.currencyconverter.util.NumberTextWatcherForThousand.Companion.separatorForThousand
+import android.content.Context
+import com.alesh.currencyconverter.util.system.getCurrentSeparators
 
-fun String.fixCommasAndDotsOfString(): String {
-    var normalString = this
-    normalString = normalString.replace(separatorForFractional, ".")
-    normalString = normalString.replace(separatorForThousand, "")
-    return normalString
+fun String.fixForDoubleUsage(context: Context): String {
+    val separators = context.applicationContext.getCurrentSeparators()
+    return replace(separators.first, "").replace(separators.second, ".")
+}
+
+fun String.fixForDoubleUsage(separators: Pair<String, String>): String {
+    return replace(separators.first, "").replace(separators.second, ".")
 }

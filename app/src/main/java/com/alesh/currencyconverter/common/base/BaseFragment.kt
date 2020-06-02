@@ -1,16 +1,20 @@
 package com.alesh.currencyconverter.common.base
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.alesh.currencyconverter.util.view.buildLoadingDialog
 import com.alesh.currencyconverter.util.view.hideKeyboard
 import com.alesh.currencyconverter.util.view.onBackPressedListener
 import com.alesh.currencyconverter.util.view.snackbar
 
 open class BaseFragment : Fragment() {
+
+    private var loadingDialog: Dialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +24,12 @@ open class BaseFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         hideKeyboard()
+    }
+
+    /* Loadings */
+    fun showLoading(isLoading: Boolean) {
+        loadingDialog = if (isLoading) buildLoadingDialog().apply { show() }
+        else loadingDialog?.dismiss().let { null }
     }
 
     /* Messages */

@@ -8,10 +8,10 @@ import com.alesh.currencyconverter.App
 import com.alesh.currencyconverter.R
 import com.alesh.currencyconverter.common.base.BaseFragment
 import com.alesh.currencyconverter.ui.currencies.adapter.CurrenciesAdapter
+import com.alesh.currencyconverter.util.dagger.viewModel
 import com.alesh.currencyconverter.util.decoration.LinearLayoutDecoration
 import com.alesh.currencyconverter.util.error.message
 import com.alesh.currencyconverter.util.livedata.EventObserver
-import com.alesh.currencyconverter.util.dagger.viewModel
 import kotlinx.android.synthetic.main.fragment_currencies.*
 
 class CurrenciesFragment : BaseFragment(), View.OnClickListener {
@@ -76,6 +76,12 @@ class CurrenciesFragment : BaseFragment(), View.OnClickListener {
             viewLifecycleOwner,
             EventObserver {
                 snackbar(container, it.message())
+            })
+
+        viewModel.isLoading.observe(
+            viewLifecycleOwner,
+            EventObserver {
+                showLoading(it)
             })
     }
 }

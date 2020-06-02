@@ -18,13 +18,16 @@ class SettingsViewModel @Inject constructor(
 
     val currencies = MutableLiveData<Event<List<VoCurrency>>>()
     val error = MutableLiveData<Event<ApplicationErrors>>()
+    val isLoading = MutableLiveData<Event<Boolean>>()
 
     fun getCurrencies() {
         viewModelScope.launch {
+            isLoading.postValue(Event(true))
             when (val result = interactor.getAllCurrencies()) {
                 is Result.Success -> currencies.postValue(Event(result.value.mapToVoCurrenciesList()))
                 is Result.Error   -> error.postValue(Event(result.error))
             }
+            isLoading.postValue(Event(false))
         }
     }
 

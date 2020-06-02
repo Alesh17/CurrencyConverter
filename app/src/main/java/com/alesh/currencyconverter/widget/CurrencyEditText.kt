@@ -2,12 +2,15 @@ package com.alesh.currencyconverter.widget
 
 import android.content.Context
 import android.util.AttributeSet
-import com.alesh.currencyconverter.util.NumberTextWatcherForThousand
+import androidx.appcompat.widget.AppCompatEditText
+import com.alesh.currencyconverter.util.CurrencyTextWatcher
+import com.alesh.currencyconverter.util.system.getCurrentSeparators
 
-class CurrencyEditText(context: Context, attrs: AttributeSet) :
-    androidx.appcompat.widget.AppCompatEditText(context, attrs) {
+class CurrencyEditText(context: Context, attrs: AttributeSet) : AppCompatEditText(context, attrs) {
+
+    private val separators by lazy { context.getCurrentSeparators() }
 
     init {
-        this.addTextChangedListener(NumberTextWatcherForThousand(this))
+        this.addTextChangedListener(CurrencyTextWatcher(this, separators))
     }
 }

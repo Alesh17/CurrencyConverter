@@ -1,6 +1,5 @@
 package com.alesh.data.source.local
 
-import android.util.Log
 import com.alesh.domain.model.dto.Currency
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -25,13 +24,11 @@ class CurrenciesDataSource @Inject constructor() {
     fun addFavorite(id: Int) {
         val item = getCurrencyById(id)
         changeFavoriteState(item, true)
-        Log.i("alesh! ${item.abbreviation}", "true")
     }
 
     fun removeFavorite(id: Int) {
         val item = getCurrencyById(id)
         changeFavoriteState(item, false)
-        Log.i("alesh! ${item.abbreviation}", "false")
     }
 
     private fun changeFavoriteState(currency: Currency, state: Boolean) {
