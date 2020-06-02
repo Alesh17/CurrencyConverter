@@ -1,19 +1,18 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+
+    compileSdkVersion globalConfig.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.alesh.currencyconverter"
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        applicationId appConfig.applicationId
+        minSdkVersion globalConfig.minSdkVersion
+        targetSdkVersion globalConfig.targetSdkVersion
+        versionCode appConfig.versionCode
+        versionName appConfig.versionName
     }
 
     buildTypes {
@@ -23,12 +22,47 @@ android {
         }
     }
 
+    dataBinding {
+        enabled = true
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+    // Data layer
+    implementation project(path: ':data')
+
+    // Kotlin stdlib
+    implementation globalDependencies.stdlib
+
+    // DI
+    implementation appDependencies.dagger
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    kapt appDependencies.daggerCompiler
+
+    // AndroidX dependencies
+    implementation globalDependencies.appCompat
+    implementation globalDependencies.coreKtx
+    implementation appDependencies.constraintLayout
+    implementation appDependencies.recyclerView
+    implementation appDependencies.lifecycleExtensions
+    implementation appDependencies.lifecycleViewmodelKtx
+    implementation appDependencies.legacySupportV4
+    implementation appDependencies.cardView
+    implementation appDependencies.navigationFragmentKtx
+    implementation appDependencies.navigationUiKtx
+    implementation appDependencies.activityKtx
+    implementation appDependencies.fragmentKtx
+
+    // Material design system
+    implementation globalDependencies.material
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="layout_radius">32dp</dimen>
+
+    <dimen name="recycler_item_margin">12dp</dimen>
+    <dimen name="recycler_commonPadding">28dp</dimen>
+    <dimen name="recycler_verticalPadding">12dp</dimen>
+
+    <dimen name="card_cornerRadius">12dp</dimen>
+    <dimen name="card_elevation">0dp</dimen>
+
+    <dimen name="title_textSize">34sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="buttonSave_margin">34dp</dimen>
+    <dimen name="loader_progressBar_diameter">42dp</dimen>
+
+</resources>
