@@ -11,7 +11,7 @@ import com.alesh.currencyconverter.ui.currencies.adapter.CurrenciesAdapter
 import com.alesh.currencyconverter.util.decoration.LinearLayoutDecoration
 import com.alesh.currencyconverter.util.error.message
 import com.alesh.currencyconverter.util.livedata.EventObserver
-import com.alesh.currencyconverter.util.viewModel
+import com.alesh.currencyconverter.util.dagger.viewModel
 import kotlinx.android.synthetic.main.fragment_currencies.*
 
 class CurrenciesFragment : BaseFragment(), View.OnClickListener {
@@ -38,20 +38,20 @@ class CurrenciesFragment : BaseFragment(), View.OnClickListener {
     override fun onDestroyView() {
         super.onDestroyView()
         fab.setOnClickListener(null)
-        viewModel.currencies.removeObservers(viewLifecycleOwner)
+        viewModel.favoriteCurrencies.removeObservers(viewLifecycleOwner)
         viewModel.error.removeObservers(viewLifecycleOwner)
     }
 
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.fab -> {
-
+                navigate(R.id.action_currenciesFragment_to_settingsFragment)
             }
         }
     }
 
     private fun setupData() {
-        viewModel.getCurrencies()
+        viewModel.getFavoriteCurrencies()
     }
 
     private fun setupButtons() {
@@ -59,14 +59,14 @@ class CurrenciesFragment : BaseFragment(), View.OnClickListener {
     }
 
     private fun setupRecyclerView() {
-        val margin = resources.getDimensionPixelSize(R.dimen.common_recycler_item_margin)
-        rvCurrencies.adapter = adapter
-        rvCurrencies.addItemDecoration(LinearLayoutDecoration(margin))
+        val margin = resources.getDimensionPixelSize(R.dimen.recycler_item_margin)
+        rvFavoriteCurrencies.adapter = adapter
+        rvFavoriteCurrencies.addItemDecoration(LinearLayoutDecoration(margin))
     }
 
     private fun observeViewModel() {
 
-        viewModel.currencies.observe(
+        viewModel.favoriteCurrencies.observe(
             viewLifecycleOwner,
             EventObserver {
                 adapter.submitList(it)

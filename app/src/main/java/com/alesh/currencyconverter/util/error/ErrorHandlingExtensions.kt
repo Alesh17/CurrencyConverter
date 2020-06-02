@@ -8,7 +8,6 @@ import com.alesh.domain.error.ApplicationErrors
 fun ApplicationErrors.message() =
 
     when (this) {
-
         ApplicationErrors.Generic              -> R.string.generic_error
         ApplicationErrors.Server               -> R.string.server_error
         ApplicationErrors.NoInternetConnection -> R.string.noInternetConnection_error

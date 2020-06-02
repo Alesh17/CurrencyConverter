@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="common_layout_radius">32dp</dimen>
-    <dimen name="common_recycler_item_margin">12dp</dimen>
-    <dimen name="recycler_padding">28dp</dimen>
+
+    <dimen name="layout_radius">32dp</dimen>
+
+    <dimen name="recycler_item_margin">12dp</dimen>
+    <dimen name="recycler_commonPadding">28dp</dimen>
     <dimen name="recycler_verticalPadding">12dp</dimen>
-    <dimen name="cornerRadius">12dp</dimen>
-    <dimen name="сard_elevation">0dp</dimen>
+
+    <dimen name="card_cornerRadius">12dp</dimen>
+    <dimen name="card_elevation">0dp</dimen>
+
+    <dimen name="title_textSize">34sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="buttonSave_margin">34dp</dimen>
+
 </resources>

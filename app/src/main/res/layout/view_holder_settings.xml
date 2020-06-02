@@ -33,25 +33,14 @@
                 cardview:layout_constraintTop_toTopOf="parent"
                 tools:text="USD:" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline"
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/mySwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                cardview:layout_constraintGuide_percent="0.15" />
-
-            <com.alesh.currencyconverter.widget.CurrencyEditText
-                android:id="@+id/etValue"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="16dp"
-                android:inputType="numberDecimal"
-                android:text="@{item.value}"
-                android:textSize="16sp"
+                android:layout_marginEnd="24dp"
+                android:checked="@{item.isFavorite}"
                 cardview:layout_constraintBottom_toBottomOf="parent"
                 cardview:layout_constraintEnd_toEndOf="parent"
-                cardview:layout_constraintStart_toEndOf="@+id/guideline"
                 cardview:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

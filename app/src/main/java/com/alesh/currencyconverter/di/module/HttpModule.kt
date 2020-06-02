@@ -21,7 +21,6 @@ object HttpModule {
             .apply {
                 connectTimeout(TIME_OUT, TimeUnit.SECONDS)
                 readTimeout(TIME_OUT, TimeUnit.SECONDS)
-                writeTimeout(TIME_OUT, TimeUnit.SECONDS)
                 if (BuildConfig.DEBUG) addInterceptor(
                     HttpLoggingInterceptor().setLevel(
                         HttpLoggingInterceptor.Level.BODY

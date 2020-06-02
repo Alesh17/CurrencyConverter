@@ -1,4 +1,4 @@
-package com.alesh.currencyconverter.ui.currencies.adapter.model
+package com.alesh.currencyconverter.ui.model
 
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
@@ -10,6 +10,7 @@ class VoCurrency : BaseObservable() {
     var scale: Int = 1
     var rate: Double = 1.0
     var abbreviation: String = ""
+    var isFavorite: Boolean = false
 
     @get:Bindable
     var value: String = "0.0"

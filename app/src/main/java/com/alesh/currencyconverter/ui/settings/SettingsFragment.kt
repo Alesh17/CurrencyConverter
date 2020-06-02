@@ -7,12 +7,22 @@ import android.view.ViewGroup
 import com.alesh.currencyconverter.App
 import com.alesh.currencyconverter.R
 import com.alesh.currencyconverter.common.base.BaseFragment
+import com.alesh.currencyconverter.ui.settings.adapter.SettingsAdapter
+import com.alesh.currencyconverter.util.decoration.LinearLayoutDecoration
 import com.alesh.currencyconverter.util.error.message
-import com.alesh.currencyconverter.util.viewModel
 import com.alesh.currencyconverter.util.livedata.EventObserver
-import kotlinx.android.synthetic.main.fragment_currencies.*
+import com.alesh.currencyconverter.util.dagger.viewModel
+import kotlinx.android.synthetic.main.fragment_currencies.container
+import kotlinx.android.synthetic.main.fragment_settings.*
 
-class SettingsFragment : BaseFragment() {
+class SettingsFragment : BaseFragment(), View.OnClickListener {
+
+    private val adapter by lazy {
+        SettingsAdapter(
+            viewModel::addToFavorites,
+            viewModel::removeFromFavorites
+        )
+    }
 
     private val viewModel: SettingsViewModel by viewModel {
         App.component.settingsViewModel
@@ -29,13 +39,22 @@ class SettingsFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         setupData()
         setupButtons()
+        setupRecyclerView()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        //        btnSignIn.setOnClickListener(this)
+        btnSave.setOnClickListener(this)
         viewModel.currencies.removeObservers(viewLifecycleOwner)
         viewModel.error.removeObservers(viewLifecycleOwner)
+    }
+
+    override fun onClick(view: View?) {
+        when (view?.id) {
+            R.id.btnSave -> {
+                navigate(R.id.action_settingsFragment_to_currenciesFragment)
+            }
+        }
     }
 
     private fun setupData() {
@@ -43,9 +62,13 @@ class SettingsFragment : BaseFragment() {
     }
 
     private fun setupButtons() {
-//        btnSignIn.setOnClickListener(this)
-//        btnSignUp.setOnClickListener(this)
-//        tvForgotPassword.setOnClickListener(this)
+        btnSave.setOnClickListener(this)
+    }
+
+    private fun setupRecyclerView() {
+        val margin = resources.getDimensionPixelSize(R.dimen.recycler_item_margin)
+        rvSettingsCurrencies.adapter = adapter
+        rvSettingsCurrencies.addItemDecoration(LinearLayoutDecoration(margin))
     }
 
     private fun observeViewModel() {
@@ -53,7 +76,7 @@ class SettingsFragment : BaseFragment() {
         viewModel.currencies.observe(
             viewLifecycleOwner,
             EventObserver {
-
+                adapter.submitList(it)
             })
 
         viewModel.error.observe(

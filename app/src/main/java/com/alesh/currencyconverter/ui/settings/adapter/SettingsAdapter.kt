@@ -1,16 +1,15 @@
-package com.alesh.currencyconverter.ui.currencies.adapter
+package com.alesh.currencyconverter.ui.settings.adapter
 
-import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.DiffUtil
 import com.alesh.currencyconverter.R
 import com.alesh.currencyconverter.common.base.DataBindingAdapter
 import com.alesh.currencyconverter.common.base.DataBindingViewHolder
 import com.alesh.currencyconverter.ui.model.VoCurrency
-import com.alesh.currencyconverter.widget.CurrencyEditText
-import kotlinx.android.synthetic.main.view_holder_currency.view.*
+import kotlinx.android.synthetic.main.view_holder_settings.view.*
 
-class CurrenciesAdapter(
-    private val calculate: (currency: VoCurrency) -> Unit
+class SettingsAdapter(
+    private val addToFavorites: (currency: VoCurrency) -> Unit,
+    private val removeFromFavorites: (currency: VoCurrency) -> Unit
 ) : DataBindingAdapter<VoCurrency>(DiffCallback()) {
 
     class DiffCallback : DiffUtil.ItemCallback<VoCurrency>() {
@@ -19,19 +18,18 @@ class CurrenciesAdapter(
             oldItem.id == newItem.id
 
         override fun areContentsTheSame(oldItem: VoCurrency, newItem: VoCurrency) =
-            oldItem.abbreviation == newItem.abbreviation
+            oldItem.isFavorite == newItem.isFavorite
     }
 
     override fun onBindViewHolder(holder: DataBindingViewHolder<VoCurrency>, position: Int) {
         super.onBindViewHolder(holder, position)
-        val etValue = holder.binding.root.etValue as CurrencyEditText
-        etValue.doOnTextChanged { text, _, _, _ ->
-            currentList[position]
-                .takeIf { etValue.hasFocus() }
-                ?.also { it.value = text.toString() }
-                ?.let { calculate(it) }
+        holder.binding.root.mySwitch.setOnClickListener {
+            val currentItem = currentList[position]
+            if (currentItem.isFavorite) removeFromFavorites(currentItem)
+            else addToFavorites(currentItem)
+            currentList[position].isFavorite = currentItem.isFavorite.not()
         }
     }
 
-    override fun getItemViewType(position: Int) = R.layout.view_holder_currency
+    override fun getItemViewType(position: Int) = R.layout.view_holder_settings
 }

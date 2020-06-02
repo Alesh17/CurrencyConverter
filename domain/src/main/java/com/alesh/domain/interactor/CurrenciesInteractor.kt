@@ -7,11 +7,11 @@ class CurrenciesInteractor @Inject constructor(
     private val repository: CurrenciesRepository
 ) {
 
-    suspend fun getCurrencies() = repository.getCurrencies()
+    suspend fun getAllCurrencies() = repository.getAllCurrencies()
 
-    fun getFavoriteCurrencies() = repository.getFavoriteCurrencies()
+    suspend fun getFavoriteCurrencies() = repository.getFavoriteCurrencies()
 
-    fun setFavoriteCurrency(id: Int) = repository.setFavoriteCurrency(id)
+    fun addFavoriteCurrency(id: Int) = repository.addFavoriteCurrency(id)
 
     fun removeFromFavoriteCurrencies(id: Int) = repository.removeFromFavoriteCurrencies(id)
 }

@@ -7,19 +7,18 @@
     </style>
 
     <style name="RecyclerViewStyle">
-        <item name="android:background">@drawable/bg_rounded_top_grey</item>
         <item name="android:clipToPadding">false</item>
         <item name="android:overScrollMode">never</item>
         <item name="android:scrollbars">none</item>
-        <item name="android:paddingTop">@dimen/recycler_padding</item>
+        <item name="android:paddingTop">@dimen/recycler_commonPadding</item>
         <item name="android:paddingBottom">@dimen/recycler_verticalPadding</item>
-        <item name="android:paddingStart">@dimen/recycler_padding</item>
-        <item name="android:paddingEnd">@dimen/recycler_padding</item>
+        <item name="android:paddingStart">@dimen/recycler_commonPadding</item>
+        <item name="android:paddingEnd">@dimen/recycler_commonPadding</item>
     </style>
 
     <style name="CardViewStyle">
-        <item name="cardCornerRadius">@dimen/cornerRadius</item>
-        <item name="cardElevation">@dimen/сard_elevation</item>
+        <item name="cardCornerRadius">@dimen/card_cornerRadius</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
         <item name="cardPreventCornerOverlap">false</item>
     </style>
 
