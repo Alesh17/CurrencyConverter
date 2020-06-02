@@ -5,9 +5,9 @@ import com.alesh.domain.model.result.Result
 
 interface CurrenciesRepository {
 
-    suspend fun getAllCurrencies(): Result<List<Currency>>
+    suspend fun getCurrencies(): Result<List<Currency>>
 
-    fun setAllCurrencies(currencies: List<Currency>)
+    fun setCurrencies(currencies: List<Currency>)
 
     suspend fun getFavoriteCurrencies(): Result<List<Currency>>
 

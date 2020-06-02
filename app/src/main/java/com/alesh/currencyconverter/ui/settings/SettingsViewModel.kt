@@ -24,7 +24,7 @@ class SettingsViewModel @Inject constructor(
     fun getCurrencies() {
         viewModelScope.launch {
             isLoading.postValue(Event(true))
-            when (val result = interactor.getAllCurrencies()) {
+            when (val result = interactor.getCurrencies()) {
                 is Result.Success -> currencies.postValue(Event(result.value.mapToVoCurrenciesList()))
                 is Result.Error   -> error.postValue(Event(result.error))
             }
@@ -33,7 +33,7 @@ class SettingsViewModel @Inject constructor(
     }
 
     fun setNewCurrencies(newList: List<VoCurrency>) {
-        interactor.setAllCurrencies(newList.mapToCurrenciesList())
+        interactor.setCurrencies(newList.mapToCurrenciesList())
     }
 
     fun addToFavorites(currency: VoCurrency) {

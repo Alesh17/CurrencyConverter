@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.view_holder_settings.view.*
 import java.util.*
 
 class SettingsAdapter(
-    private val setNewList: (currencies: List<VoCurrency>) -> Unit,
+    private val saveNewList: (currencies: List<VoCurrency>) -> Unit,
     private val addToFavorites: (currency: VoCurrency) -> Unit,
     private val removeFromFavorites: (currency: VoCurrency) -> Unit
 ) : DataBindingAdapter<VoCurrency>(DiffCallback()) {
@@ -49,7 +49,7 @@ class SettingsAdapter(
             for (i in fromPosition downTo toPosition + 1)
                 Collections.swap(newList, i, i - 1)
 
-        setNewList(newList)
+        saveNewList(newList)
         notifyItemMoved(fromPosition, toPosition)
     }
 

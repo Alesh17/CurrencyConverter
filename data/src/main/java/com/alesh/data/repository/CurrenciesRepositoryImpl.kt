@@ -18,7 +18,7 @@ class CurrenciesRepositoryImpl @Inject constructor(
 
     private var isFirstLaunch = true
 
-    override suspend fun getAllCurrencies(): Result<List<Currency>> {
+    override suspend fun getCurrencies(): Result<List<Currency>> {
         val currentCurrencies = currenciesDataSource.getAll()
         return if (currentCurrencies.isEmpty()) {
             val result = safeApiCall { api.getCurrencies().mapToCurrenciesList() }
@@ -29,13 +29,13 @@ class CurrenciesRepositoryImpl @Inject constructor(
         } else Result.Success(currentCurrencies)
     }
 
-    override fun setAllCurrencies(currencies: List<Currency>) {
+    override fun setCurrencies(currencies: List<Currency>) {
         currenciesDataSource.setAll(currencies)
     }
 
     override suspend fun getFavoriteCurrencies(): Result<List<Currency>> {
         return if (isFirstLaunch) {
-            val result = getAllCurrencies()
+            val result = getCurrencies()
             if (result is Result.Error) result
             else Result.Success(currenciesDataSource.getFavorites())
         } else Result.Success(currenciesDataSource.getFavorites())

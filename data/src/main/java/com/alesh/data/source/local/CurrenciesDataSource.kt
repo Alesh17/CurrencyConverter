@@ -7,18 +7,18 @@ import javax.inject.Singleton
 @Singleton
 class CurrenciesDataSource @Inject constructor() {
 
-    private val allCurrencies: MutableList<Currency> = mutableListOf()
+    private val currencies: MutableList<Currency> = mutableListOf()
 
-    fun getAll() = allCurrencies as List<Currency>
+    fun getAll() = currencies as List<Currency>
 
     fun setAll(currencies: List<Currency>) {
-        allCurrencies.clear()
-        allCurrencies.addAll(currencies)
+        this.currencies.clear()
+        this.currencies.addAll(currencies)
     }
 
     fun getFavorites(): List<Currency> {
         val predicate: (Currency) -> Boolean = { it.isFavorite }
-        return allCurrencies.filter(predicate)
+        return currencies.filter(predicate)
     }
 
     fun addFavorite(id: Int) {
@@ -32,14 +32,14 @@ class CurrenciesDataSource @Inject constructor() {
     }
 
     private fun changeFavoriteState(currency: Currency, state: Boolean) {
-        for (item in allCurrencies)
+        for (item in currencies)
             if (item.id == currency.id)
                 item.isFavorite = state
     }
 
     private fun getCurrencyById(id: Int): Currency {
         val predicate: (Currency) -> Boolean = { it.id == id }
-        val items = allCurrencies.filter(predicate)
+        val items = currencies.filter(predicate)
         return items[0]
     }
 }
