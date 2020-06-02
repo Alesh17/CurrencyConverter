@@ -29,6 +29,10 @@ class CurrenciesRepositoryImpl @Inject constructor(
         } else Result.Success(currentCurrencies)
     }
 
+    override fun setAllCurrencies(currencies: List<Currency>) {
+        currenciesDataSource.setAll(currencies)
+    }
+
     override suspend fun getFavoriteCurrencies(): Result<List<Currency>> {
         return if (isFirstLaunch) {
             val result = getAllCurrencies()

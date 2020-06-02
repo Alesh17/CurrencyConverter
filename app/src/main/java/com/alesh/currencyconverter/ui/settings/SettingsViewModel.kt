@@ -3,8 +3,9 @@ package com.alesh.currencyconverter.ui.settings
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.alesh.currencyconverter.ui.currencies.mapper.mapToVoCurrenciesList
 import com.alesh.currencyconverter.ui.model.VoCurrency
+import com.alesh.currencyconverter.ui.model.mapper.mapToCurrenciesList
+import com.alesh.currencyconverter.ui.model.mapper.mapToVoCurrenciesList
 import com.alesh.currencyconverter.util.livedata.Event
 import com.alesh.domain.error.ApplicationErrors
 import com.alesh.domain.interactor.CurrenciesInteractor
@@ -29,6 +30,10 @@ class SettingsViewModel @Inject constructor(
             }
             isLoading.postValue(Event(false))
         }
+    }
+
+    fun setNewCurrencies(newList: List<VoCurrency>) {
+        interactor.setAllCurrencies(newList.mapToCurrenciesList())
     }
 
     fun addToFavorites(currency: VoCurrency) {

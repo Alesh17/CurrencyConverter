@@ -4,8 +4,8 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.alesh.currencyconverter.ui.currencies.mapper.mapToVoCurrenciesList
 import com.alesh.currencyconverter.ui.model.VoCurrency
+import com.alesh.currencyconverter.ui.model.mapper.mapToVoCurrenciesList
 import com.alesh.currencyconverter.util.livedata.Event
 import com.alesh.currencyconverter.util.string.fixForDoubleUsage
 import com.alesh.domain.error.ApplicationErrors

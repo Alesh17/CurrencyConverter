@@ -7,6 +7,8 @@ interface CurrenciesRepository {
 
     suspend fun getAllCurrencies(): Result<List<Currency>>
 
+    fun setAllCurrencies(currencies: List<Currency>)
+
     suspend fun getFavoriteCurrencies(): Result<List<Currency>>
 
     fun addFavoriteCurrency(id: Int)

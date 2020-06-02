@@ -1,4 +1,4 @@
-package com.alesh.currencyconverter.ui.currencies.mapper
+package com.alesh.currencyconverter.ui.model.mapper
 
 import com.alesh.currencyconverter.ui.model.VoCurrency
 import com.alesh.domain.model.dto.Currency
@@ -12,5 +12,17 @@ fun List<Currency>.mapToVoCurrenciesList(): List<VoCurrency> {
             rate = it.rate
             isFavorite = it.isFavorite
         }
+    }
+}
+
+fun List<VoCurrency>.mapToCurrenciesList(): List<Currency> {
+    return this.map {
+        Currency(
+            id = it.id,
+            abbreviation = it.abbreviation,
+            scale = it.scale,
+            rate = it.rate,
+            isFavorite = it.isFavorite
+        )
     }
 }

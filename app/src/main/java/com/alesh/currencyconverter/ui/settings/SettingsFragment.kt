@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.alesh.currencyconverter.App
 import com.alesh.currencyconverter.R
 import com.alesh.currencyconverter.common.base.BaseFragment
+import com.alesh.currencyconverter.ui.settings.adapter.DragManageAdapter
 import com.alesh.currencyconverter.ui.settings.adapter.SettingsAdapter
 import com.alesh.currencyconverter.util.dagger.viewModel
 import com.alesh.currencyconverter.util.decoration.LinearLayoutDecoration
@@ -19,6 +21,7 @@ class SettingsFragment : BaseFragment(), View.OnClickListener {
 
     private val adapter by lazy {
         SettingsAdapter(
+            viewModel::setNewCurrencies,
             viewModel::addToFavorites,
             viewModel::removeFromFavorites
         )
@@ -66,6 +69,11 @@ class SettingsFragment : BaseFragment(), View.OnClickListener {
     }
 
     private fun setupRecyclerView() {
+
+        val callback = DragManageAdapter(adapter, ItemTouchHelper.UP.or(ItemTouchHelper.DOWN), 0)
+        val helper = ItemTouchHelper(callback)
+        helper.attachToRecyclerView(rvSettingsCurrencies)
+
         val margin = resources.getDimensionPixelSize(R.dimen.recycler_item_margin)
         rvSettingsCurrencies.adapter = adapter
         rvSettingsCurrencies.addItemDecoration(LinearLayoutDecoration(margin))
@@ -76,7 +84,7 @@ class SettingsFragment : BaseFragment(), View.OnClickListener {
         viewModel.currencies.observe(
             viewLifecycleOwner,
             EventObserver {
-                adapter.submitList(it)
+                adapter.submitList(it as MutableList)
             })
 
         viewModel.error.observe(
