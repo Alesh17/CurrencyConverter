@@ -51,7 +51,7 @@ class CurrenciesRepositoryImpl @Inject constructor(
 
     private fun doOnFirstLaunch(currencies: MutableList<Currency>): MutableList<Currency> {
         if (isFirstLaunch) {
-            currencies.add(Currency(0, "BYR", 1, 1.0, true))
+            currencies.add(0, Currency(0, "BYR", 1, 1.0, true))
             for (item in currencies)
                 if (item.abbreviation == "USD" || item.abbreviation == "EUR")
                     item.isFavorite = true
